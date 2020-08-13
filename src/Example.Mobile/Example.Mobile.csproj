@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ViewModels\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
+    <None Remove="ViewModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.development.json" />
+    <None Remove="appsettings.json" />
+    <None Remove="appsettings.production.json" />
+    <None Remove="appsettings.staging.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="appsettings.development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appsettings.production.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appsettings.staging.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hostly" Version="1.1.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Example.Mobile.Domain\Example.Mobile.Domain.csproj" />
+    <ProjectReference Include="..\Example.Mobile.EntityFrameworkCore.Sqlite\Example.Mobile.EntityFrameworkCore.Sqlite.csproj" />
+    <ProjectReference Include="..\Example.Mobile.EntityFrameworkCore\Example.Mobile.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Example.Mobile.Infrastructure\Example.Mobile.Infrastructure.csproj" />
+    <ProjectReference Include="..\Example.Mobile.Serialization.UTF8Json\Example.Mobile.Serialization.UTF8Json.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Modals\LoadingModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
